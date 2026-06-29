@@ -1,2 +1,52 @@
-# password-generator
-A project for generating passwords and checking their strength
+# Генератор и проверка паролей
+
+Приложение умеет:
+
+- генерировать пароль заданной длины;
+- включать в пароль заглавные буквы, цифры и спецсимволы;
+- оценивать надёжность введённого пароля.
+
+## Как пользоваться
+
+### Генерация пароля
+
+Импортируйте функцию `generatePassword` и передайте:
+
+- `length` — длину пароля;
+- `seed` — число для повторяемой генерации;
+- `options` — настройки состава пароля.
+
+```ts
+import { generatePassword } from './password';
+
+const password = generatePassword(12, 42, {
+  useUppercase: true,
+  useDigits: true,
+  useSpecial: true,
+});
+
+console.log(password);
+```
+
+### Проверка пароля
+
+Функция `checkPassword` принимает пароль и возвращает оценку его надёжности.
+
+```ts
+import { checkPassword } from './password';
+
+const result = checkPassword('Qwerty123!');
+console.log(result);
+```
+
+### Пример результата
+
+```txt
+Очень надёжный пароль (оценка 5 из 5)
+```
+
+## Особенности
+
+- По умолчанию включены строчные буквы, заглавные буквы и цифры.
+- Спецсимволы подключаются отдельно.
+- Минимальная рекомендуемая длина пароля — 8 символов.
